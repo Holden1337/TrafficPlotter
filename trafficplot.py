@@ -1,12 +1,3 @@
-'''
-This is a script I wrote to aid in apartment hunting by plotting commute times
-between potential apartments and work. It uses the google maps api to get
-the time it would take to get to work during the morning and then the time it
-would take to get home during the afternoon/evening. Traffic is accounted for.
-Once rush hour is over a plot of the data is made so you can see when traffic
-starts to get worse. Requires matplotlib, googlemaps api, datetime, numpy,
-and simplejson
-'''
 
 import matplotlib.pyplot as plt
 import googlemaps
