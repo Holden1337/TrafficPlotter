@@ -6,6 +6,7 @@ from time import sleep
 import simplejson
 import urllib.request
 import numpy as np
+import os
 
 gmaps = googlemaps.Client(key ='#Enter your google maps api key here' )
 API = #Enter api key here again
@@ -57,6 +58,6 @@ while True:
             break
         sleep(60)
     else:
-        pass
-        print("Current time is " +str(datetime.now().hour) + ":" + str(datetime.now().minute))
+        os.system('clear')
+        print("Not collecting data right now; current time is " +str(datetime.now().hour) + ":" + str(datetime.now().minute))
         sleep(60)
