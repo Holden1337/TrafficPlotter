@@ -9,3 +9,7 @@ the google maps python library. Paste your google maps API key into the
 script where directed and also enter the start and end addresses where
 directed. You can edit the hours during which the script collects data
 by editing the am and pm arrays. 
+
+
+#Example Plot
+!(example.png)
