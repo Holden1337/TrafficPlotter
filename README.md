@@ -15,4 +15,4 @@ by editing the am and pm arrays.
 
 
 
-!(https://github.com/Holden1337/TrafficPlotter/blob/example.png)
+!(https://github.com/Holden1337/TrafficPlotter/blob/TrafficPlotter/example.png)
