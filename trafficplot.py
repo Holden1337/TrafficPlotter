@@ -60,7 +60,7 @@ while True:
             plt.plot(time_array,commute_time)
             plt.xlabel('Time (minutes)')
             plt.ylabel('Commute time (minutes)')
-            plt.title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day))
+            plt.title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day)+ "\nStart = " + start_address + "\nEnd = " + end_address)
             plt.grid(True)
             plt.savefig(str(datetime.now().month) + '-' + str(datetime.now().day) +'-'+ mode + '.png')
         sleep(60)
