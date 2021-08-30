@@ -11,7 +11,7 @@ directed. You can edit the hours during which the script collects data
 by editing the am and pm arrays. 
 
 
-#Example Plot
+# Example Plot
 
 
 
