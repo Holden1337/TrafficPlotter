@@ -44,11 +44,28 @@ while True:
         else:
             start = end_temp
             end = start_temp
+
+        '''
+        idx = pd.date_range(datetime.now(), datetime.now()+timedelta(minutes = 179), freq='min')
+        df = pd.DataFrame(index = idx, columns=['commute time'])
+        i = 0
+
+
+        '''
+
         url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + start + "&destinations=" + end + "&mode=driving&traffic_model=best_guess&departure_time=now&language=en-EN&sensor=false&key=" + API
         result = simplejson.load(urllib.request.urlopen(url))
         driving_time_seconds = result['rows'][0]['elements'][0]['duration_in_traffic']['value']
         minutes = driving_time_seconds/60
         commute_time.append(minutes)
+
+
+        '''
+        df['commute time'][i] = minutes
+
+        i = i + 1
+        '''
+
 
         #once rush hour is over, make plot of commute time vs time
         if datetime.now().minute == 59 and datetime.now().hours+1 not in rush_hours:
@@ -60,9 +77,35 @@ while True:
             plt.plot(time_array,commute_time)
             plt.xlabel('Time (minutes)')
             plt.ylabel('Commute time (minutes)')
-            plt.title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day)+ "\nStart = " + start_address + "\nEnd = " + end_address)
+            if mode == 'Morning':
+                plt.title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day)+ "\nStart = " + start_address + "\nEnd = " + end_address)
+            else:
+                plt.title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day) + "\nStart = " + end_address + "\nEnd = " + start_address)
             plt.grid(True)
             plt.savefig(str(datetime.now().month) + '-' + str(datetime.now().day) +'-'+ mode + '.png')
+            commute_time.clear()
+
+
+            '''
+            fig, ax = plt.subplots()
+            hours = mdates.HourLocator(interval=1)
+            h_fmt = mdates.DateFormatter('%H:%M:%S')
+
+            ax.plot(df.index,df['commute time'].values)
+
+            ax.xaxis.set_major_locator(hours)
+            ax.xaxis.set_major_formatter(h_fmt)
+
+            ax.set_ylabel("Commute time (minutes)")
+            if mode == 'Morning':
+                ax.set_title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day) + "\nStart = " + start_address + "\nEnd = " + end_address)
+            else:
+                ax.set_title('Traffic for ' + mode + ' of ' + str(datetime.now().month) + '/'+ str(datetime.now().day) + "\nStart = " + end_address + "\nEnd = " + start_address)
+            plt.grid(True)
+            plt.savefig(str(datetime.now().month) + '-' + str(datetime.now().day) +'-'+ mode + '.png')
+            del df
+
+            '''
         sleep(60)
     else:
         os.system('clear')
