@@ -10,13 +10,13 @@ import pandas as pd
 import os
 
 gmaps = googlemaps.Client(key ='#Enter your google maps api key here' )
-API = #Enter api key here again
+API = # Enter api key here again
 
-#enter in apartment/home address and work address
+# enter in apartment/home address and work address
 start_address = # "Enter your start address here "
 end_address = # "Enter your end address here"
 
-#get latitude and longitude for both start and end address
+# get latitude and longitude for both start and end address
 start_geocode = gmaps.geocode(start_address)
 
 start_lat = start_geocode[0]["geometry"]["location"]["lat"]
@@ -33,8 +33,8 @@ end_lng = end_geocode[0]["geometry"]["location"]["lng"]
 end = str(end_lat) + ',' + str(end_lng)
 end_temp = end
 
-#hours you consider to be rush hour or times you might go to or from work
-rush_hours = [6,7,8,15,16,17]
+# hours you consider to be rush hour or times you might go to or from work
+rush_hours = [6, 7, 8, 15, 16, 17]
 commute_time = []
 
 while True:
@@ -74,8 +74,8 @@ while True:
                 mode = 'Morning'
             else:
                 mode = 'Afternoon'
-            time_array = np.linspace(0,len(commute_time)-1,num=len(commute_time))
-            plt.plot(time_array,commute_time)
+            time_array = np.linspace(0, len(commute_time)-1, num=len(commute_time))
+            plt.plot(time_array,dcommute_time)
             plt.xlabel('Time (minutes)')
             plt.ylabel('Commute time (minutes)')
             if mode == 'Morning':
@@ -112,3 +112,4 @@ while True:
         os.system('clear')
         print("Not collecting data right now; waiting for rush hour")
         sleep(60)
+
