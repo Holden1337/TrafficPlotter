@@ -9,8 +9,9 @@ import numpy as np
 import pandas as pd
 import os
 
-gmaps = googlemaps.Client(key ='#Enter your google maps api key here' )
-API = # Enter api key here again
+API = ''# Enter api key here 
+gmaps = googlemaps.Client(key=API)
+
 
 # enter in apartment/home address and work address
 start_address = # "Enter your start address here "
