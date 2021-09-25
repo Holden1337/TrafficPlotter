@@ -14,8 +14,8 @@ gmaps = googlemaps.Client(key=API)
 
 
 # enter in apartment/home address and work address
-start_address = # "Enter your start address here "
-end_address = # "Enter your end address here"
+start_address = '' # "Enter your start address here "
+end_address = ''  # "Enter your end address here"
 
 # get latitude and longitude for both start and end address
 start_geocode = gmaps.geocode(start_address)
